@@ -4,6 +4,10 @@ import java.util.Date;
 
 public class Articulo {
 
+
+
+
+
 	int id_articulo;
 	String nombre;
 	Date fecha_entrada;
@@ -81,7 +85,11 @@ public class Articulo {
 		this.precio = precio;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Articulo [id_articulo=" + id_articulo + ", nombre=" + nombre + ", fecha_entrada=" + fecha_entrada
+				+ ", precio=" + precio + "]";
+	}
 	
 	
 }
