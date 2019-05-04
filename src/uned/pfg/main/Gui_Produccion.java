@@ -9,8 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import uned.pfg.bean.Articulo;
 import uned.pfg.bean.ArticuloPedido;
 import uned.pfg.logica.Servicio_Art_Sin_Realizar;
+import uned.pfg.logica.Servicio_Articulo_Seleccionado;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 
 
@@ -137,79 +142,77 @@ public class Gui_Produccion extends javax.swing.JFrame {
        numPedidos.setText(" ");
 
        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-       getContentPane().setLayout(layout);
        layout.setHorizontalGroup(
-           layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-           .addGroup(layout.createSequentialGroup()
-               .addContainerGap()
-               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                   .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                   .addGroup(layout.createSequentialGroup()
-                       .addGap(12, 12, 12)
-                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                           .addComponent(comoIdDistri, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                           .addGroup(layout.createSequentialGroup()
-                               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                   .addGroup(layout.createSequentialGroup()
-                                       .addComponent(InfoNombreArt, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                       .addComponent(nombreArti, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                   .addComponent(infoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                               .addGap(18, 18, 18)
-                               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                   .addComponent(infoNombreDistr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                   .addComponent(infoActivos, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                   .addComponent(numPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                   .addComponent(nombreDist, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                           .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                               .addGap(0, 0, Short.MAX_VALUE)
-                               .addComponent(altaArti, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                           .addGroup(layout.createSequentialGroup()
-                               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                               .addComponent(consultaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                       .addContainerGap())))
-           .addGroup(layout.createSequentialGroup()
-               .addGap(73, 73, 73)
-               .addComponent(infoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-               .addGap(64, 64, 64)
-               .addComponent(infoDisti, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-               .addGap(0, 0, Short.MAX_VALUE))
+       	layout.createParallelGroup(Alignment.LEADING)
+       		.addGroup(layout.createSequentialGroup()
+       			.addContainerGap()
+       			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+       				.addComponent(jPanel1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
+       				.addGroup(layout.createSequentialGroup()
+       					.addGap(12)
+       					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+       						.addComponent(comoIdDistri, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
+       						.addGroup(layout.createSequentialGroup()
+       							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+       								.addComponent(InfoNombreArt, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+       								.addComponent(infoCombo, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+       								.addComponent(infoArticulo, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
+       							.addGap(28)
+       							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+       								.addComponent(infoNombreDistr, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+       								.addComponent(infoActivos, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+       							.addPreferredGap(ComponentPlacement.UNRELATED)
+       							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+       								.addComponent(numPedidos, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+       								.addComponent(nombreDist, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)))
+       						.addComponent(nombreArti, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE))
+       					.addPreferredGap(ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+       					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+       						.addComponent(altaArti, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+       						.addComponent(consultaPedido, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE))
+       					.addContainerGap())))
+       		.addGroup(layout.createSequentialGroup()
+       			.addGap(355)
+       			.addComponent(infoDisti, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
+       			.addContainerGap(266, Short.MAX_VALUE))
        );
        layout.setVerticalGroup(
-           layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-           .addGroup(layout.createSequentialGroup()
-               .addContainerGap()
-               .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                   .addComponent(infoArticulo)
-                   .addComponent(infoDisti))
-               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                   .addGroup(layout.createSequentialGroup()
-                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                       .addComponent(consultaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                   .addGroup(layout.createSequentialGroup()
-                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                           .addComponent(InfoNombreArt)
-                           .addComponent(nombreArti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                           .addComponent(infoNombreDistr)
-                           .addComponent(nombreDist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                   .addComponent(infoCombo)
-                   .addComponent(infoActivos)
-                   .addComponent(numPedidos))
-               .addGap(13, 13, 13)
-               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                   .addComponent(altaArti, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                   .addComponent(comoIdDistri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+       	layout.createParallelGroup(Alignment.LEADING)
+       		.addGroup(layout.createSequentialGroup()
+       			.addContainerGap()
+       			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+       			.addPreferredGap(ComponentPlacement.RELATED)
+       			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+       				.addComponent(infoDisti)
+       				.addComponent(infoArticulo))
+       			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+       				.addGroup(layout.createSequentialGroup()
+       					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+       					.addComponent(consultaPedido, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+       					.addPreferredGap(ComponentPlacement.RELATED))
+       				.addGroup(layout.createSequentialGroup()
+       					.addPreferredGap(ComponentPlacement.UNRELATED)
+       					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+       						.addComponent(infoNombreDistr)
+       						.addComponent(nombreDist, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+       						.addComponent(InfoNombreArt))
+       					.addPreferredGap(ComponentPlacement.RELATED)
+       					.addComponent(nombreArti, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+       					.addGap(6)))
+       			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+       				.addGroup(layout.createSequentialGroup()
+       					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+       						.addComponent(infoActivos)
+       						.addComponent(numPedidos))
+       					.addGap(13))
+       				.addGroup(layout.createSequentialGroup()
+       					.addComponent(infoCombo)
+       					.addPreferredGap(ComponentPlacement.RELATED)))
+       			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+       				.addComponent(altaArti, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+       				.addComponent(comoIdDistri, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
        );
+       getContentPane().setLayout(layout);
 
        pack();
    }// </editor-fold>                        
@@ -234,8 +237,14 @@ public class Gui_Produccion extends javax.swing.JFrame {
 
 private void tablaMouseClicked(java.awt.event.MouseEvent evt) {                                   
        
-	int num_id_articulo = tabla.rowAtPoint(evt.getPoint());
+	int num = tabla.rowAtPoint(evt.getPoint());
+	int id_art = (int) tabla.getValueAt(num, 0);
 	
+	Servicio_Articulo_Seleccionado serv = new Servicio_Articulo_Seleccionado(id_art);
+	
+	Articulo art = serv.parseXMLtoArticulo();
+	
+	nombreArti.setText(art.getNombre());
 	
 	
    }                                  
