@@ -2,6 +2,7 @@ package uned.pfg.main;
 
 
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,16 +12,20 @@ import javax.swing.table.DefaultTableModel;
 
 import uned.pfg.bean.Articulo;
 import uned.pfg.bean.ArticuloPedido;
+import uned.pfg.bean.Distribuidor;
 import uned.pfg.bean.Pedido;
 
 
 import uned.pfg.logica.Servicio_Art_Sin_Realizar;
 import uned.pfg.logica.Servicio_Articulo_Seleccionado;
+import uned.pfg.logica.Servicio_Distribuidor;
 import uned.pfg.logica.Servicio_Pedidos_conArticulo;
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -61,12 +66,14 @@ public class Gui_Produccion extends javax.swing.JFrame {
        InfoNombreArt = new javax.swing.JLabel();
        infoCombo = new javax.swing.JLabel();
        comoIdPedido = new javax.swing.JComboBox<String>();
+
        nombreArti = new javax.swing.JTextField();
        infoDisti = new javax.swing.JLabel();
        infoNombreDistr = new javax.swing.JLabel();
        nombreDist = new javax.swing.JTextField();
        infoActivos = new javax.swing.JLabel();
        numPedidos = new javax.swing.JLabel();
+       lista = new ArrayList<Pedido>();
        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
        setTitle("VENTAS ");
 
@@ -92,6 +99,24 @@ public class Gui_Produccion extends javax.swing.JFrame {
                actualizarActionPerformed(evt);
            }
        });
+       
+       comoIdPedido.addActionListener(new ActionListener() {
+          	public void actionPerformed(ActionEvent arg0) {
+          		String id_pedido = comoIdPedido.getSelectedItem().toString();
+          		
+          		Iterator<Pedido> it = lista.iterator();
+          		
+          		while(it.hasNext()) {
+          			Pedido p = it.next();
+          			if(p.getId_pedido() == Integer.parseInt(id_pedido)) {
+          				
+          				buscaDistribuidor(p.getId_distribuidor());
+          			}
+          		}
+          	}
+
+
+          });
 
        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
        jPanel1.setLayout(jPanel1Layout);
@@ -260,7 +285,7 @@ private void tablaMouseClicked(java.awt.event.MouseEvent evt) {
    private String[] pedidosPorId(int id_art) {
 	
 	   Servicio_Pedidos_conArticulo servicio = new Servicio_Pedidos_conArticulo(id_art);
-	   List<Pedido>lista = servicio.parseXMLtoList();
+	   lista = servicio.parseXMLtoList();
 	   
 	   String[] pedidos = new String[lista.size()+1];
 	   
@@ -295,7 +320,17 @@ private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {
 
    private void altaArtiActionPerformed(java.awt.event.ActionEvent evt) {                                         
        // TODO add your handling code here:
-   }                                        
+   }                           
+   
+   
+	private void buscaDistribuidor(int id_distribuidor) {
+		
+			Servicio_Distribuidor serv = new Servicio_Distribuidor(id_distribuidor);
+			
+			nombreDist.setText(serv.parseXMLtoList().getNombre());
+		
+		
+	}
 
  
 
@@ -319,5 +354,6 @@ private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {
    private Object [][]filas;
    private Object [] columnas = {"ID ARTICULO","CANTIDAD A REALIZAR"};
    private DefaultTableModel modelo; 
+   List<Pedido>lista;
    // End of variables declaration                   
 }
