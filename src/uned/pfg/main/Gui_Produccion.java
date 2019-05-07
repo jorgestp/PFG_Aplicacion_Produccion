@@ -256,7 +256,8 @@ private void tablaMouseClicked(java.awt.event.MouseEvent evt) {
    }                                          
 
    private void consultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {                                               
-       // TODO add your handling code here:
+      
+	   new Gui_Pedido().setVisible(true);
    }                                              
 
    private void altaArtiActionPerformed(java.awt.event.ActionEvent evt) {                                         
