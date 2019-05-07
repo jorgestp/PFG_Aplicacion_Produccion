@@ -42,6 +42,15 @@ public class Pedido {
 		this.fecha_envio = fecha_envio;
 		this.estado = estado;
 	}
+	
+	
+
+
+
+	public Pedido(int id_pedido, int id_distribuidor) {
+		this.id_pedido = id_pedido;
+		this.id_distribuidor = id_distribuidor;
+	}
 
 
 

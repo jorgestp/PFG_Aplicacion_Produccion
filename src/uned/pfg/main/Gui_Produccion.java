@@ -11,8 +11,13 @@ import javax.swing.table.DefaultTableModel;
 
 import uned.pfg.bean.Articulo;
 import uned.pfg.bean.ArticuloPedido;
+import uned.pfg.bean.Pedido;
+
+
 import uned.pfg.logica.Servicio_Art_Sin_Realizar;
 import uned.pfg.logica.Servicio_Articulo_Seleccionado;
+import uned.pfg.logica.Servicio_Pedidos_conArticulo;
+
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -55,7 +60,7 @@ public class Gui_Produccion extends javax.swing.JFrame {
        infoArticulo = new javax.swing.JLabel();
        InfoNombreArt = new javax.swing.JLabel();
        infoCombo = new javax.swing.JLabel();
-       comoIdDistri = new javax.swing.JComboBox<>();
+       comoIdPedido = new javax.swing.JComboBox<String>();
        nombreArti = new javax.swing.JTextField();
        infoDisti = new javax.swing.JLabel();
        infoNombreDistr = new javax.swing.JLabel();
@@ -131,7 +136,6 @@ public class Gui_Produccion extends javax.swing.JFrame {
 
        infoCombo.setText("PEDIDOS CON ESTE ARTICULO");
 
-       comoIdDistri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Pedido", "1", "2", "3" }));
 
        infoDisti.setText("INFORMACION DEL PEDIDO");
 
@@ -151,7 +155,7 @@ public class Gui_Produccion extends javax.swing.JFrame {
        				.addGroup(layout.createSequentialGroup()
        					.addGap(12)
        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-       						.addComponent(comoIdDistri, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
+       						.addComponent(comoIdPedido, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
        						.addGroup(layout.createSequentialGroup()
        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
        								.addComponent(InfoNombreArt, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
@@ -210,7 +214,7 @@ public class Gui_Produccion extends javax.swing.JFrame {
        					.addPreferredGap(ComponentPlacement.RELATED)))
        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
        				.addComponent(altaArti, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-       				.addComponent(comoIdDistri, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+       				.addComponent(comoIdPedido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
        );
        getContentPane().setLayout(layout);
 
@@ -246,10 +250,39 @@ private void tablaMouseClicked(java.awt.event.MouseEvent evt) {
 	
 	nombreArti.setText(art.getNombre());
 	
+	//hay que poner los id_pedidos que tienen ese articulo
+	
+    comoIdPedido.setModel(new javax.swing.DefaultComboBoxModel<String>(pedidosPorId(id_art)));
+
 	
    }                                  
 
-   private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+   private String[] pedidosPorId(int id_art) {
+	
+	   Servicio_Pedidos_conArticulo servicio = new Servicio_Pedidos_conArticulo(id_art);
+	   List<Pedido>lista = servicio.parseXMLtoList();
+	   
+	   String[] pedidos = new String[lista.size()+1];
+	   
+	   Iterator<Pedido> it = lista.iterator();
+	   pedidos[0] = "--Pedidos encontrados--";
+	   int i =1;
+	   while(it.hasNext()) {
+		   
+		   Pedido p = it.next();
+		   pedidos[i] = String.valueOf(p.getId_pedido());
+		   i++;
+	   }
+	   
+	   
+	   
+	return pedidos;
+	    
+	   
+	
+}
+
+private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {                                           
        
 	   modelo.setRowCount(0);
 	   rellenarTabla();
@@ -270,7 +303,7 @@ private void tablaMouseClicked(java.awt.event.MouseEvent evt) {
    private javax.swing.JLabel InfoNombreArt;
    private javax.swing.JButton actualizar;
    private javax.swing.JButton altaArti;
-   private javax.swing.JComboBox<String> comoIdDistri;
+   private javax.swing.JComboBox<String> comoIdPedido;
    private javax.swing.JButton consultaPedido;
    private javax.swing.JLabel infoActivos;
    private javax.swing.JLabel infoArticulo;

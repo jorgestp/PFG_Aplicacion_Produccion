@@ -15,3 +15,7 @@ encoding//src/uned/pfg/ws/WS_Pedido.java=UTF-8
 encoding//src/uned/pfg/ws/WS_PedidoService.java=UTF-8
 encoding//src/uned/pfg/ws/WS_PedidoServiceLocator.java=UTF-8
 encoding//src/uned/pfg/ws/WS_PedidoSoapBindingStub.java=UTF-8
+encoding//src/uned/pfg/ws/WS_Pedido_De_Articulo.java=UTF-8
+encoding//src/uned/pfg/ws/WS_Pedido_De_ArticuloService.java=UTF-8
+encoding//src/uned/pfg/ws/WS_Pedido_De_ArticuloServiceLocator.java=UTF-8
+encoding//src/uned/pfg/ws/WS_Pedido_De_ArticuloSoapBindingStub.java=UTF-8
