@@ -19,6 +19,7 @@ import uned.pfg.bean.Pedido;
 import uned.pfg.logica.Servicio_Art_Sin_Realizar;
 import uned.pfg.logica.Servicio_Articulo_Seleccionado;
 import uned.pfg.logica.Servicio_Distribuidor;
+import uned.pfg.logica.Servicio_Pedidos_activos;
 import uned.pfg.logica.Servicio_Pedidos_conArticulo;
 
 import javax.swing.GroupLayout.Alignment;
@@ -104,15 +105,21 @@ public class Gui_Produccion extends javax.swing.JFrame {
           	public void actionPerformed(ActionEvent arg0) {
           		String id_pedido = comoIdPedido.getSelectedItem().toString();
           		
+          		int id_dist = 0;
           		Iterator<Pedido> it = lista.iterator();
           		
           		while(it.hasNext()) {
           			Pedido p = it.next();
           			if(p.getId_pedido() == Integer.parseInt(id_pedido)) {
           				
-          				buscaDistribuidor(p.getId_distribuidor());
+          				id_dist = p.getId_distribuidor();
+          				buscaDistribuidor(id_dist);
           			}
           		}
+          		
+          		Servicio_Pedidos_activos serv = new Servicio_Pedidos_activos();
+          		
+          		numPedidos.setText(serv.cogerServicio(id_dist));
           	}
 
 

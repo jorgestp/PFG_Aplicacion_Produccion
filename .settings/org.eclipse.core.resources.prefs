@@ -23,3 +23,7 @@ encoding//src/uned/pfg/ws/WS_Pedido_De_Articulo.java=UTF-8
 encoding//src/uned/pfg/ws/WS_Pedido_De_ArticuloService.java=UTF-8
 encoding//src/uned/pfg/ws/WS_Pedido_De_ArticuloServiceLocator.java=UTF-8
 encoding//src/uned/pfg/ws/WS_Pedido_De_ArticuloSoapBindingStub.java=UTF-8
+encoding//src/uned/pfg/ws/WS_PedidosActivos.java=UTF-8
+encoding//src/uned/pfg/ws/WS_PedidosActivosService.java=UTF-8
+encoding//src/uned/pfg/ws/WS_PedidosActivosServiceLocator.java=UTF-8
+encoding//src/uned/pfg/ws/WS_PedidosActivosSoapBindingStub.java=UTF-8
