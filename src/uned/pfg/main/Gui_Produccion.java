@@ -326,7 +326,8 @@ private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {
    }                                              
 
    private void altaArtiActionPerformed(java.awt.event.ActionEvent evt) {                                         
-       // TODO add your handling code here:
+       
+	   new Gui_AltaProductos().setVisible(true);
    }                           
    
    
