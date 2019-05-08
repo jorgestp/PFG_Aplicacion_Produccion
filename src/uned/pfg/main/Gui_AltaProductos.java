@@ -1,8 +1,6 @@
 package uned.pfg.main;
 
 
-
-import java.awt.color.CMMException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,7 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import uned.pfg.bean.Articulo;
+import uned.pfg.bean.ArticuloPedido;
 import uned.pfg.logica.ServicioArticulos;
+import uned.pfg.logica.Servicio_Nueva_produccion;
 
 
 public class Gui_AltaProductos extends JFrame {
@@ -44,7 +44,7 @@ public class Gui_AltaProductos extends JFrame {
         guardar = new javax.swing.JButton();
         borrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
 
         infoSeleccion.setText("SELECCIONE ARTICULO PARA DAR NUEVA PRODUCCION");
 
@@ -147,6 +147,12 @@ public class Gui_AltaProductos extends JFrame {
     	
     	if(isNumero(cant) && !seleccionID.getSelectedItem().toString().equals("Selec. Artículo")) {
     		
+    		ArticuloPedido artPed = new ArticuloPedido(buscaArticulo(seleccionID.getSelectedItem().toString()),
+    				Integer.parseInt(cant));
+    		
+    		Servicio_Nueva_produccion serv = new Servicio_Nueva_produccion(artPed);
+    		
+    		String respuesta = serv.cogerServicio();
     		
     		
     	}else {
@@ -180,8 +186,9 @@ public class Gui_AltaProductos extends JFrame {
 	}
 
 	private void borrarActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
-    }           
+
+		cantidad.setText("");
+	}           
     
     
     private String[] Articulos() {
@@ -204,6 +211,28 @@ public class Gui_AltaProductos extends JFrame {
  	   return articulos;
  }
 
+    
+    private Articulo buscaArticulo(String nombre) {
+    	
+  	   Articulo art = null;;
+  	   Iterator<Articulo> it = listaArt.iterator();
+  	   
+  	   while(it.hasNext()) {
+  		   
+  		   Articulo a = it.next();
+
+  		   if(a.getNombre().equals(nombre)) {
+  			   
+  			   art = a;
+  			   
+  		   }
+  		   
+  	   }
+  	   
+  	  
+  	   return art;
+    	
+    }
 
 
     // Variables declaration - do not modify                     

@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
+encoding//src/uned/pfg/ws/WS_Alta_Nueva_Produccion.java=UTF-8
+encoding//src/uned/pfg/ws/WS_Alta_Nueva_ProduccionService.java=UTF-8
+encoding//src/uned/pfg/ws/WS_Alta_Nueva_ProduccionServiceLocator.java=UTF-8
+encoding//src/uned/pfg/ws/WS_Alta_Nueva_ProduccionSoapBindingStub.java=UTF-8
 encoding//src/uned/pfg/ws/WS_ArtSeleccionado.java=UTF-8
 encoding//src/uned/pfg/ws/WS_ArtSeleccionadoService.java=UTF-8
 encoding//src/uned/pfg/ws/WS_ArtSeleccionadoServiceLocator.java=UTF-8
