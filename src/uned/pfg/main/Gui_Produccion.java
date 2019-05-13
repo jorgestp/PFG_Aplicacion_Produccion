@@ -12,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 
 import uned.pfg.bean.Articulo;
 import uned.pfg.bean.ArticuloPedido;
-import uned.pfg.bean.Distribuidor;
 import uned.pfg.bean.Pedido;
 
 

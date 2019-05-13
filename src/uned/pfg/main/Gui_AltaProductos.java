@@ -147,12 +147,42 @@ public class Gui_AltaProductos extends JFrame {
     	
     	if(isNumero(cant) && !seleccionID.getSelectedItem().toString().equals("Selec. Artículo")) {
     		
-    		ArticuloPedido artPed = new ArticuloPedido(buscaArticulo(seleccionID.getSelectedItem().toString()),
-    				Integer.parseInt(cant));
+    		int num = Integer.parseInt(cant);
     		
-    		Servicio_Nueva_produccion serv = new Servicio_Nueva_produccion(artPed);
+    		if(num <=0) {
+    			
+    			JOptionPane.showMessageDialog(null, 
+    					"No se puede introducir cantidad 0 o menor a 0", 
+    					"Produccion - Alta Produccion", 
+    					3);	
+    			
+    		}else {
     		
-    		String respuesta = serv.cogerServicio();
+    					ArticuloPedido artPed = new ArticuloPedido(buscaArticulo(seleccionID.getSelectedItem().toString()),
+    							Integer.parseInt(cant));
+    		
+    					Servicio_Nueva_produccion serv = new Servicio_Nueva_produccion(artPed);
+    		
+    					String respuesta = serv.cogerServicio();
+    		
+    					if(respuesta.equals("exito")) {
+    			
+    						JOptionPane.showMessageDialog(null, 
+    								"Entrada a " + seleccionID.getSelectedItem().toString() + " y cantidad " 
+    										+ cant + " con EXITO", 
+    										"Produccion - Alta Produccion", 
+    										2);
+    			
+    			
+    					}else {
+    			
+    						JOptionPane.showMessageDialog(null, 
+    								"No se pudo dar entrada a ese articulo y esa cantidad...", 
+    								"Produccion - Alta Produccion", 
+    								3);
+    					}
+    		
+    			}
     		
     		
     	}else {
