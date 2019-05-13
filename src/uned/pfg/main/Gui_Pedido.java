@@ -239,7 +239,7 @@ public class Gui_Pedido extends javax.swing.JFrame {
 		}
 	}
 	
-	private void rellenarTablaArticulos() {
+private void rellenarTablaArticulos() {
 		
 		modelo2.setNumRows(0);
 		ServicioArticulos_Pedido serv = new ServicioArticulos_Pedido(idPedido.getText());
@@ -254,17 +254,65 @@ public class Gui_Pedido extends javax.swing.JFrame {
 			
 			ArticuloPedido p = it.next();
 			
-            Object [] row = {p.getArticulo().getId_articulo(),
-            				p.getArticulo().getNombre(),
-            				p.getArticulo().getPrecio(),
-            				p.getCant(),
-            				p.isRealizado(),
-            				p.isEmbalado()};
-            
-            modelo2.addRow(row);
+			if(p.isRealizado() && p.isEmbalado()) {
+				
+	            Object [] row = {p.getArticulo().getId_articulo(),
+        				p.getArticulo().getNombre(),
+        				p.getArticulo().getPrecio(),
+        				p.getCant(),
+        				"SI",
+        				"SI"};
+        
+	            modelo2.addRow(row);
+				
+			}else
+			
+			if(p.isRealizado() && !p.isEmbalado()) {
+				
+	            Object [] row = {p.getArticulo().getId_articulo(),
+        				p.getArticulo().getNombre(),
+        				p.getArticulo().getPrecio(),
+        				p.getCant(),
+        				"SI",
+        				"NO"};
+        
+	            modelo2.addRow(row);
+				
+				
+			}else
+			
+			if(!p.isRealizado() && p.isEmbalado()) {
+				
+	            Object [] row = {p.getArticulo().getId_articulo(),
+        				p.getArticulo().getNombre(),
+        				p.getArticulo().getPrecio(),
+        				p.getCant(),
+        				"NO",
+        				"SI"};
+        
+	            modelo2.addRow(row);
+				
+			}
+			
+			else {
+				
+				
+	            Object [] row = {p.getArticulo().getId_articulo(),
+        				p.getArticulo().getNombre(),
+        				p.getArticulo().getPrecio(),
+        				p.getCant(),
+        				"NO",
+        				"NO"};
+        
+	            modelo2.addRow(row);
+				
+			}
+			
+
 		}
 		
 	}
+
 
     // Variables declaration - do not modify                     
     private javax.swing.JTable TablaArticulo;
