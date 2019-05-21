@@ -1,5 +1,6 @@
 package uned.pfg.logica;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -132,7 +133,8 @@ public class ServicioArticulos {
 	   
 	   ex.printStackTrace();
 	} 
-	       
+			File fichero = new File(ARCHIVO);
+			fichero.delete();
 	       return lista;
 	   }
 	   
@@ -199,6 +201,9 @@ public class ServicioArticulos {
 	   ex.printStackTrace();
 	} 
 	       
+	       
+			File fichero = new File(ARCHIVO_artSelec);
+			fichero.delete();
 	       return art;
 	   }
 }

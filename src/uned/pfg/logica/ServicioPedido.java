@@ -114,6 +114,8 @@ public class ServicioPedido {
 			ex.printStackTrace();
 		}
 
+		File fichero = new File(ARCHIVO);
+		fichero.delete();
 		return lista;
 	}
 
@@ -166,6 +168,7 @@ public class ServicioPedido {
 				s = s + line + "\n";
 
 			}
+			ar.delete();
 
 		} catch (IOException | ParserConfigurationException | TransformerException | DOMException e) {
 

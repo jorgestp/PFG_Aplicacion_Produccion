@@ -92,15 +92,14 @@ public class Servicio_Nueva_produccion {
 	                  s= s + line +"\n";
 	                  
 	              } 
-	              
-	              System.out.println(ar.getAbsolutePath());
+	              ar.delete();
+	              //System.out.println(ar.getAbsolutePath());
 	              
 	          }catch( IOException | ParserConfigurationException | TransformerException | DOMException e){
 	              
 	              e.printStackTrace();
 	          }
-	     
-	          
+
 	          return s;
 	}
 	

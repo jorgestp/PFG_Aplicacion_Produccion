@@ -1,5 +1,6 @@
 package uned.pfg.logica;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.rmi.RemoteException;
@@ -102,7 +103,8 @@ public class Servicio_Art_Sin_Realizar {
 	   
 	   ex.printStackTrace();
 	} 
-	       
+			File fichero = new File(ARCHIVO);
+			fichero.delete();
 	       return lista;
 	   }
 	
