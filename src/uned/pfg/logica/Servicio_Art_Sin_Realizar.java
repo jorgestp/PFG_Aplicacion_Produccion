@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -41,7 +42,10 @@ public class Servicio_Art_Sin_Realizar {
             p.close();
         }catch(Exception e){
             
-            e.printStackTrace();
+            //e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "No se puede "
+					+ "obtener los articulos de la base de datos."
+					+ " Compruebe su funcionamiento", "Ventas", 2);
         }
 		
 		
@@ -101,7 +105,7 @@ public class Servicio_Art_Sin_Realizar {
 
 	} catch (Exception ex) {
 	   
-	   ex.printStackTrace();
+	   //ex.printStackTrace();
 	} 
 			File fichero = new File(ARCHIVO);
 			fichero.delete();

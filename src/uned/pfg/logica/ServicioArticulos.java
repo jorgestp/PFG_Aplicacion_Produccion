@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -53,7 +54,9 @@ public class ServicioArticulos {
 		            p.close();
 		        }catch(Exception e){
 		            
-		            e.printStackTrace();
+		            //e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "No se puede obtener los articulos del sistema..."
+							+ " Compruebe su funcionamiento del servidor y la BBDD", "Ventas", 2);
 		        }
 	}
 	
@@ -71,7 +74,9 @@ public class ServicioArticulos {
 	            p.close();
 	        }catch(Exception e){
 	            
-	            e.printStackTrace();
+	            //e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "No se puede obtener los articulos del sistema..."
+						+ " Compruebe su funcionamiento del servidor y la BBDD", "Ventas", 2);
 	        }
 		
 	}
@@ -131,7 +136,9 @@ public class ServicioArticulos {
 
 	} catch (Exception ex) {
 	   
-	   ex.printStackTrace();
+	   //ex.printStackTrace();
+		//JOptionPane.showMessageDialog(null, "No se puede obtener los articulos del sistema..."
+				//+ " Compruebe su funcionamiento del servidor y la BBDD", "Ventas", 2);
 	} 
 			File fichero = new File(ARCHIVO);
 			fichero.delete();
@@ -198,7 +205,9 @@ public class ServicioArticulos {
 
 	} catch (Exception ex) {
 	   
-	   ex.printStackTrace();
+	   //ex.printStackTrace();
+		JOptionPane.showMessageDialog(null, "No se puede obtener los articulos del sistema..."
+				+ " Compruebe su funcionamiento del servidor y la BBDD", "Ventas", 2);
 	} 
 	       
 	       
