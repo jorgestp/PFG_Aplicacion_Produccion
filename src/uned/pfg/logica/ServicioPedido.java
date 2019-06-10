@@ -31,22 +31,44 @@ import uned.pfg.bean.Pedido;
 import uned.pfg.ws.WS_Pedido;
 import uned.pfg.ws.WS_PedidoProxy;
 
+/**
+ * Clase que consume el servicio web del servidor, de modo que, recoge todos los
+ * pedidos que hay en el sistema en un momento dado.
+ * 
+ * 
+ * @author JORGE VILLALBA RUIZ 47536486V
+ * @version 1.0
+ */
 public class ServicioPedido {
 
 	private static final String ARCHIVO = "XML_venta.xml";
 	private Pedido pedido;
 	private final String FILESEND = "./xmlToSend.xml";
 
+	/**
+	 * Constructor por defecto que llama a una funcion privada cuya finalidad es
+	 * consumir el servicio web del servidor para obtener todos los pedidos del
+	 * sistema
+	 */
 	public ServicioPedido() {
 
 		cogerServicio();
 	}
 
+	/**
+	 * Constructor que asigna el Objeto de tipo pedido pasado por parametro a un
+	 * campo de clase
+	 */
 	public ServicioPedido(Pedido pedido) {
 
 		this.pedido = pedido;
 	}
 
+	/**
+	 * Funcion privada que consume el servicio web de los pedidos, de modo que
+	 * escribe en un archivo xml, el String que ha sido devuelto por la llamada a
+	 * dicho servicio web y que viene en forma de String y con formato xml
+	 */
 	private void cogerServicio() {
 
 		WS_Pedido ws = new WS_PedidoProxy("http://localhost:8080/Aplicacion_Web/services/WS_Pedido");
@@ -57,12 +79,18 @@ public class ServicioPedido {
 			p.close();
 		} catch (Exception e) {
 
-			//e.printStackTrace();
+			// e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "No se puede obtener los Pedidos del sistema..."
 					+ " Compruebe su funcionamiento del servidor y la BBDD", "Ventas", 2);
 		}
 	}
 
+	/**
+	 * Funcion que parsea el archivo xml que tiene la clase con todos los pedidos
+	 * que han sido devueltos por el servicio web, en una lista de Pedidos.
+	 * 
+	 * @return Lista de Objetos de tipo Pedido
+	 */
 	public List<Pedido> parseXMLtoList() {
 
 		List<Pedido> lista = new ArrayList<Pedido>();
@@ -114,14 +142,20 @@ public class ServicioPedido {
 
 		} catch (Exception ex) {
 
-			//ex.printStackTrace();
+			// ex.printStackTrace();
 		}
 
-		File fichero = new File(ARCHIVO);
-		fichero.delete();
+		File archivo = new File(ARCHIVO);
+		archivo.delete();
 		return lista;
 	}
 
+	/**
+	 * Funcion que crea un XML mediante el campo de clase de tipo Pedido y lo parsea
+	 * a String
+	 * 
+	 * @return String que representa el pedido en formato XML
+	 */
 	public String prepararPedido_paraServidor() {
 
 		String s = "";
@@ -166,13 +200,14 @@ public class ServicioPedido {
 
 			File ar = new File(FILESEND);
 			FileReader f = new FileReader(ar);
+			@SuppressWarnings("resource")
 			BufferedReader b = new BufferedReader(f);
 			while ((line = b.readLine()) != null) {
 				s = s + line + "\n";
 
 			}
-			ar.delete();
 
+			ar.delete();
 		} catch (IOException | ParserConfigurationException | TransformerException | DOMException e) {
 
 			e.printStackTrace();
