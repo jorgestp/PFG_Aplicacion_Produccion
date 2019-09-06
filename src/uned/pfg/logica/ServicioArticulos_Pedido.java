@@ -46,7 +46,7 @@ public class ServicioArticulos_Pedido {
 
 	private static final String ARCHIVO = "XML_art.xml";
 	private static final String SEND = "XML_artPedido_send.xml";
-	String id;
+	private String id;
 
 	/**
 	 * Recoge el id del pedido que se quiere desglosar y se lo asigna al campo de
