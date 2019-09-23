@@ -44,6 +44,8 @@ public class Gui_AltaProductos extends JFrame {
 		guardar = new javax.swing.JButton();
 		borrar = new javax.swing.JButton();
 
+		setTitle("PRODUCCIÓN - Nueva Producción");
+		
 		infoSeleccion.setText("SELECCIONE ARTICULO PARA DAR NUEVA PRODUCCION");
 
 		seleccionID.setModel(new javax.swing.DefaultComboBoxModel<>(Articulos()));

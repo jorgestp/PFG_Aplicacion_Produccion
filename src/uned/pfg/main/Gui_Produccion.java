@@ -74,7 +74,7 @@ public class Gui_Produccion extends javax.swing.JFrame {
 		numPedidos = new javax.swing.JLabel();
 		lista = new ArrayList<Pedido>();
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("VENTAS ");
+		setTitle("PRODUCCIÓN ");
 
 		modelo = new DefaultTableModel(filas, columnas);
 		tabla.setModel(modelo);
@@ -157,7 +157,7 @@ public class Gui_Produccion extends javax.swing.JFrame {
 
 		InfoNombreArt.setText("NOMBRE");
 
-		infoCombo.setText("PEDIDOS CON ESTE ARTICULO");
+		infoCombo.setText("ID PEDIDO CON EL ARTICULO");
 
 		infoDisti.setText("INFORMACION DEL PEDIDO");
 

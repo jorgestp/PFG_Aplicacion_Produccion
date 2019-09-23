@@ -52,6 +52,9 @@ public class Gui_Pedido extends javax.swing.JFrame {
 		tablaPedido.setModel(modelo);
 		jScrollPane1.setViewportView(tablaPedido);
 
+		setTitle("PRODUCCIÓN - Pedidos");
+
+		
 		modelo2 = new DefaultTableModel(filas2, columnas2);
 		TablaArticulo.setModel(modelo2);
 		jScrollPane2.setViewportView(TablaArticulo);
